@@ -1,70 +1,170 @@
-# Getting Started with Create React App
+# Book vehicle rental frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a name="readme-top"></a>
 
-## Available Scripts
+# 📗 Table of Contents
+- [:book: About the Project](#about-project)
+  - [:hammer_and_wrench: Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+- [:computer: Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+- [:busts_in_silhouette: Authors](#authors)
+- [:telescope: Future Features](#future-features)
+- [:handshake: Contributing](#contributing)
+- [:star:️ Show your support](#support)
+- [:pray: Acknowledgements](#acknowledgements)
+- [:question: FAQ](#faq)
+- [:memo: License](#license)
 
-In the project directory, you can run:
+<!-- PROJECT DESCRIPTION -->
+# 📖 [Book vehicle rental frontend] <a name="about-project"></a>
 
-### `npm start`
+**[Book vehicle rental frontend]** is a frontend react app for our book vehicle rental backend. It shows the features of the app and provides a user with better experience and interface
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## [Link to the front-end repo](https://github.com/HERMON-1995/Book_vehicle_rental-frontend/tree/development)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠 Built With <a name="built-with"></a>
 
-### `npm test`
+### Tech Stack <a name="tech-stack"></a>
+<details>
+  <summary>React</summary>
+  <ul>
+    <li><a>https://react.org/</a></li>
+  </ul>
+</details>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- Features -->
 
-### `npm run build`
+### Key Features <a name="key-features"></a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **[Render vehicles]**
+- **[Add vehicles]**
+- **[Delete vehicles]**
+- **[Reserve vehicles]**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- GETTING STARTED -->
 
-### `npm run eject`
+## 💻 Getting Started <a name="getting-started"></a>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To get a local copy up and running, follow these steps.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+In order to run this project you need:
+- Install Ruby
+- Install Rails
+- Install Postgresql
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Setup
 
-## Learn More
+Clone this repository to your desired folder:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+  cd Book_vehicle_rental-backend
+  git clone https://github.com/HERMON-1995/book_vehicle_rental-frontend.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Install
 
-### Code Splitting
+Install this project with:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```sh
+  cd Book_vehicle_rental-frontend
+  bundle install
+```
 
-### Analyzing the Bundle Size
+```sh
+  gem install --no-document rubocop -v '>= 1.0, < 2.0' # https://docs.rubocop.org/en/stable/installation/
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Usage
 
-### Making a Progressive Web App
+To run the project, execute the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```sh
+  rails server
+```
 
-### Advanced Configuration
+### Run tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To run tests, run the following command:
 
-### Deployment
+```sh
+  rubocop --color
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### `npm run build` fails to minify
+<!-- AUTHORS -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🙎‍♂️ Authors <a name="authors"></a>
+### 👤 **[HERMON GEBRE]**
+- GitHub: [@githubhandle](https://github.com/HERMON-1995)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/hermon-gebre/)
+
+### 👤 **[THEOPHILUS DOKU]**
+- GitHub: [@githubhandle](https://github.com/theodoku)
+- Twitter: [@twitterhandle](https://twitter.com/dok_theo)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/theophilus-doku/)
+
+### 👤 **[SHAFIU IBN YUSHAWU]**
+- GitHub: [@shafiuyushawu](https://github.com/shafiuyushawu)
+- Twitter: [@shafiuyushawu](https://twitter.com/shafiuyushawu)
+- LinkedIn: [shafiuyushawu](https://www.linkedin.com/in/shafiuyushawu/)
+
+### 👤 **[Emmanuel Obi]**
+
+- GitHub: [@githubhandle](https://github.com/Gmanlove)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/emmanuelgozieobi)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **[Rendering and reserving bicycles]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues page](https://github.com/HERMON-1995/Book_vehicle_rental-frontend/issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐ Show your support <a name="support"></a>
+
+If you like this project please show support by staring :star:️.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏Acknowledgments <a name="acknowledgements"></a>
+
+* WE would like to give Microverse our sincerest gratitude for accommodating us in the Full-time Software Development program.
+* We would like to extend our sincerest gratitude for [Murat Korkmaz](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) for this beautiful design.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
