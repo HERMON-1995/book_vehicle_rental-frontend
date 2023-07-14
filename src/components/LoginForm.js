@@ -51,11 +51,11 @@ function LoginForm() {
     }
   }, [user]);
   return (
-    <div className="w-full">
+    <div className="container mx-auto  mt-5 px-5 flex w-full">
       {isLoggedIn ? (
         <p>Login successful! Redirecting...</p>
       ) : (
-        <form onSubmit={onSubmit} className="md:text-xl form flex flex-col gap-5 justify-center content-center items-center mt-24">
+        <form onSubmit={onSubmit} className="md:text-xl form flex flex-col gap-5 justify-center content-center items-center mt-24 w-full">
           <h3 className="text-center text-3xl ">{values.isMember ? 'Login' : 'Register'}</h3>
           <div className="w-full md:w-4/5 grid gap-5  lg:w-1/5">
             {/* eslint-disable jsx-a11y/label-has-associated-control */}
