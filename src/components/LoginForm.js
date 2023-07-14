@@ -51,41 +51,43 @@ function LoginForm() {
     }
   }, [user]);
   return (
-    <div>
+    <div className="w-full">
       {isLoggedIn ? (
         <p>Login successful! Redirecting...</p>
       ) : (
-        <form onSubmit={onSubmit} className="form">
-          <h3>{values.isMember ? 'Login' : 'Register'}</h3>
-          <div className="form-row">
+        <form onSubmit={onSubmit} className="md:text-xl form flex flex-col gap-5 justify-center content-center items-center mt-24">
+          <h3 className="text-center text-3xl ">{values.isMember ? 'Login' : 'Register'}</h3>
+          <div className="w-full md:w-4/5 grid gap-5  lg:w-1/5">
             {/* eslint-disable jsx-a11y/label-has-associated-control */}
-            <label htmlFor="username" className="form-label">
-              Username
+            <div className="form-control">
+              <label className="input-group input-group-vertical">
+                <span>Username</span>
+                <input
+                  type="text"
+                  value={values.username}
+                  name="username"
+                  onChange={handleChange}
+                  className="input input-bordered focus:outline-none"
+                />
+              </label>
+            </div>
+            <label className="input-group input-group-vertical">
+              <span>Password</span>
+              <input
+                type="password"
+                value={values.password}
+                name="password"
+                onChange={handleChange}
+                className="input input-bordered focus:outline-none"
+              />
             </label>
-            <input
-              type="text"
-              value={values.username}
-              name="username"
-              onChange={handleChange}
-              className="form-input"
-            />
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              value={values.password}
-              name="password"
-              onChange={handleChange}
-              className="form-input"
-            />
+            <button type="submit" className="btn btn-block" disabled={isLoading}>
+              {isLoading ? 'Loading' : 'Submit'}
+            </button>
           </div>
-          <button type="submit" className="btn btn-block" disabled={isLoading}>
-            {isLoading ? 'Loading' : 'Submit'}
-          </button>
-          <p>
-            {values.isMember ? 'Not a member yet?' : 'Already a member?'}
-            <button type="button" onClick={toggleMember} className="member-btn">
+          <p className="text-center">
+            {values.isMember ? 'Not a member yet? ' : 'Already a member? '}
+            <button type="button" onClick={toggleMember} className="link link-success">
               {values.isMember ? 'Register' : 'Login'}
             </button>
           </p>
