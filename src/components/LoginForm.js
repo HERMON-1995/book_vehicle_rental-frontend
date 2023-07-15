@@ -15,7 +15,7 @@ function LoginForm() {
   const [values, setValues] = useState(initialState);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dispatch = useDispatch();
-  const { isLoading, user } = useSelector((store) => store.user);
+  const { isLoading, isAuthenticated } = useSelector((store) => store.user);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -41,15 +41,11 @@ function LoginForm() {
   };
 
   useEffect(() => {
-    if (user) {
+    if (isAuthenticated) {
       setIsLoggedIn(true);
-      setTimeout(() => {
-        navigate('/');
-      }, 1000);
-    } else {
-      navigate('/register');
+      navigate('/');
     }
-  }, [user]);
+  }, [isAuthenticated]);
   return (
     <div className="container mx-auto  mt-5 px-5 flex w-full">
       {isLoggedIn ? (
