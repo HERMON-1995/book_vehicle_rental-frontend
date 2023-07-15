@@ -1,8 +1,10 @@
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { fetchCars } from './redux/slices/carSlice';
 import LoginPage from './pages/LoginPage';
 // import Error from './pages/Error';
-import HomePage from './pages/HomePage';
 import ProtectedRoute from './pages/ProtectedRoute';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +15,11 @@ import AddVehicle from './pages/AddVehicle';
 import RemoveVehicle from './pages/RemoveVehicle';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCars());
+  }, []);
+
   return (
     <div>
       <ToastContainer />
@@ -22,11 +29,10 @@ function App() {
             path="/"
             element={(
               <ProtectedRoute>
-                <HomePage />
+                <Vehicles />
               </ProtectedRoute>
             )}
           />
-          <Route path="/vehicles" element={<Vehicles />} />
           <Route path="/reseve-form" element={<ReserveForm />} />
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/add-vehicle" element={<AddVehicle />} />

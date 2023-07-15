@@ -26,15 +26,23 @@
 
 **[Book vehicle rental frontend]** is a frontend react app for our book vehicle rental backend. It shows the features of the app and provides a user with better experience and interface
 
-## [Link to the front-end repo](https://github.com/HERMON-1995/Book_vehicle_rental-frontend/tree/development)
+## [Link to the back-end repo](https://github.com/HERMON-1995/Book_vehicle_rental-backend/tree/development)
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
+
 <details>
   <summary>React</summary>
   <ul>
     <li><a>https://react.org/</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Redux</summary>
+  <ul>
+    <li><a>https://redux.js.org/</a></li>
   </ul>
 </details>
 
@@ -58,16 +66,15 @@ To get a local copy up and running, follow these steps.
 ### Prerequisites
 
 In order to run this project you need:
-- Install Ruby
-- Install Rails
-- Install Postgresql
+
+- Install Node.js
 
 ### Setup
 
 Clone this repository to your desired folder:
 
 ```sh
-  cd Book_vehicle_rental-backend
+  cd book_vehicle_rental-frontend
   git clone https://github.com/HERMON-1995/book_vehicle_rental-frontend.git
 ```
 
@@ -76,12 +83,14 @@ Clone this repository to your desired folder:
 Install this project with:
 
 ```sh
-  cd Book_vehicle_rental-frontend
-  bundle install
+  cd book_vehicle_rental-frontend
+  npm install
 ```
-
 ```sh
-  gem install --no-document rubocop -v '>= 1.0, < 2.0' # https://docs.rubocop.org/en/stable/installation/
+  npm install --save-dev eslint@7.x eslint-config-airbnb@18.x eslint-plugin-import@2.x eslint-plugin-jsx-a11y@6.x eslint-plugin-react@7.x eslint-plugin-react-hooks@4.x @babel/eslint-parser@7.x @babel/core@7.x  @babel/plugin-syntax-jsx@7.x @babel/preset-env@7.x  @babel/preset-react@7.x
+```
+```sh
+  npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
 ```
 
 ### Usage
@@ -89,7 +98,7 @@ Install this project with:
 To run the project, execute the following command:
 
 ```sh
-  rails server
+  npm start
 ```
 
 ### Run tests
@@ -97,7 +106,10 @@ To run the project, execute the following command:
 To run tests, run the following command:
 
 ```sh
-  rubocop --color
+  npx eslint "**/*.{js,jsx}" --fix
+```
+```sh
+  npx stylelint "**/*.{css,scss}" --fix
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -139,7 +151,7 @@ To run tests, run the following command:
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
-Feel free to check the [issues page](https://github.com/HERMON-1995/Book_vehicle_rental-frontend/issues).
+Feel free to check the [issues page](https://github.com/HERMON-1995/book_vehicle_rental-frontend/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -156,6 +168,7 @@ If you like this project please show support by staring :star:️.
 ## 🙏Acknowledgments <a name="acknowledgements"></a>
 
 * WE would like to give Microverse our sincerest gratitude for accommodating us in the Full-time Software Development program.
+
 * We would like to extend our sincerest gratitude for [Murat Korkmaz](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) for this beautiful design.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
