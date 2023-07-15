@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useSelector((store) => store.user);
-  if (!user) {
+  const { isAuthenticated } = useSelector((store) => store.user);
+  if (!isAuthenticated) {
     return <Navigate to="/register" />;
   }
   return children;
