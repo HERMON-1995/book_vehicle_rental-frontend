@@ -10,7 +10,6 @@ import 'swiper/css/navigation';
 
 function Slider() {
   const { cars } = useSelector((state) => state.cars);
-
   return (
     <div style={{ width: '100%', position: 'relative' }}>
       <div className="slider-title">
@@ -28,7 +27,6 @@ function Slider() {
             <IoIosArrowForward />
           </div>
         </div>
-
         <Swiper
           spaceBetween={50}
           slidesPerView={3}
@@ -39,8 +37,8 @@ function Slider() {
           }}
         >
           {cars.map((car) => (
-            <SwiperSlide key={car.id}>
-              <Link to={`/detailsPage/${car.id}`} className="wrapper">
+            <SwiperSlide key={car.user_id} className="flex flex-col">
+              <Link to={`/details/${car.user_id}`} className="wrapper">
                 <div className="slide-container">
                   <img className="car" src={car.photo} alt="car" />
                 </div>
