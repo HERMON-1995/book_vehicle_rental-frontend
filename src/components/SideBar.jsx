@@ -1,11 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { BsTwitter, BsWhatsapp } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { TfiMicrosoftAlt } from 'react-icons/tfi';
+import { BiLogOutCircle } from 'react-icons/bi';
 import { logoutUser } from '../redux/slices/userSlice';
+import Logo from '../assets/Screenshot from 2023-07-16 12-04-49.png';
 
 const SideBar = () => {
   const dispatch = useDispatch();
@@ -25,31 +27,36 @@ const SideBar = () => {
       <ul className="menu p-4 w-60 h-full bg-base-200 text-base-content flex flex-col justify-between">
         <div>
           <div className="mb-28">
-            <h1 className="text-3xl italic">BOOK VEHICLE</h1>
+            <Link to="/">
+              <img src={Logo} alt="Logo" />
+            </Link>
           </div>
           {/* Sidebar content here */}
           <li className="shadow  shadow-x">
-            <Link to="/" className="hover:bg-green-500 text-xl rounded-none hover:text-white">VEHICLES</Link>
+            <NavLink to="/" className=" text-xl rounded-none hover:text-white">VEHICLES</NavLink>
           </li>
           <li className="shadow">
-            <Link to="/reseve-form" className="hover:bg-green-500 text-xl rounded-none hover:text-white">RESERVE FORM</Link>
+            <NavLink to="/reseve-form" className=" text-xl rounded-none hover:text-white">RESERVE FORM</NavLink>
           </li>
           <li className="shadow">
-            <Link to="/reservations" className="hover:bg-green-500 text-xl rounded-none hover:text-white">RESERVATIONS</Link>
+            <NavLink to="/reservations" className=" text-xl rounded-none hover:text-white">RESERVATIONS</NavLink>
           </li>
           <li className="shadow">
-            <Link to="/add-vehicle" className="hover:bg-green-500 text-xl rounded-none hover:text-white">ADD VEHICLE</Link>
+            <NavLink to="/add-vehicle" className=" text-xl rounded-none hover:text-white">ADD VEHICLE</NavLink>
           </li>
           <li className="shadow">
-            <Link to="/remove-vehicle" className="hover:bg-green-500 text-xl rounded-none hover:text-white">REMOVE VEHICLE</Link>
+            <NavLink to="/remove-vehicle" className=" text-xl rounded-none hover:text-white">REMOVE VEHICLE</NavLink>
           </li>
-          <Link to="/register">
+          <br />
+          <br />
+          <Link to="/register" className="flex justify-center items-center">
             <button
               type="button"
               onClick={handleLogout}
-              className="logout-btn btn"
+              className=" btn flex text center p-1 pl-4 w-2/3 gap-2 hover:border-xl  text-white bg-red-500 hover:text-red-500 shadow hover:bg-red-100 hover:text-red-500"
             >
               Logout
+              <BiLogOutCircle className="text-3xl" />
             </button>
           </Link>
         </div>

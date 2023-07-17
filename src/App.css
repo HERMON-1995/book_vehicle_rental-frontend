@@ -89,7 +89,6 @@
 }
 
 .swiper-prev {
-  /* left: calc(-30px - 1.5em); */
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   width: 3rem;

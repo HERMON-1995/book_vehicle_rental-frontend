@@ -29,7 +29,7 @@ export const fetchCar = createAsyncThunk(
 
 const initialState = {
   cars: [],
-  singleCar: {},
+  car: {},
 };
 
 export const carSlice = createSlice({
@@ -40,9 +40,19 @@ export const carSlice = createSlice({
   extraReducers: {
     [fetchCars.fulfilled]: (state, action) => {
       state.cars = action.payload;
-    },
-    [fetchCar.fulfilled]: (state, action) => {
-      state.singleCar = action.payload;
+
+      // Extracted the objects of cars to single car and assign it to car in the state
+      state.car = state.cars.reduce((acc, car) => ({
+        ...acc,
+        [car.user_id]: {
+          name: car.name,
+          description: car.description,
+          photo: car.photo,
+          price: car.price,
+          user: car.user,
+          dateAdded: car.date_added,
+        },
+      }), {});
     },
   },
 });
