@@ -16,10 +16,10 @@ export const fetchCars = createAsyncThunk(
 );
 
 export const postVehicle = createAsyncThunk(
-  'carSlice/postVehicle', // The action type string for pending/fulfilled/rejected actions
+  'carSlice/postVehicle',
   async (vehicleData) => {
     try {
-      const response = await fetch('http://localhost:3001/api/v1/cars', {
+      const response = await fetch(`${BASE_URL}/cars`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,6 +40,33 @@ export const postVehicle = createAsyncThunk(
   },
 );
 
+export const deleteVehicle = createAsyncThunk(
+  'carSlice/deleteVehicle',
+  async (userId) => {
+    try {
+      await fetch(`${BASE_URL}/cars/${userId}`, {
+        method: 'DELETE',
+      });
+      return userId;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+);
+
+export const initializeCars = createAsyncThunk(
+  'cars/initializeCars',
+  async (_, { dispatch }) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/cars`);
+      const { data } = response;
+      dispatch(fetchCars.fulfilled(data));
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  },
+);
+
 const initialState = {
   cars: [],
   car: {},
@@ -48,13 +75,10 @@ const initialState = {
 export const carSlice = createSlice({
   name: 'cars',
   initialState,
-
-  // Extrareducers
+  reducers: {},
   extraReducers: {
     [fetchCars.fulfilled]: (state, action) => {
       state.cars = action.payload;
-
-      // Extracted the objects of cars to single car and assign it to car in the state
       state.car = state.cars.reduce((acc, car) => ({
         ...acc,
         [car.user_id]: {
@@ -66,6 +90,19 @@ export const carSlice = createSlice({
           dateAdded: car.date_added,
         },
       }), {});
+    },
+    [postVehicle.fulfilled]: (state, action) => {
+      state.cars.push(action.payload);
+      const {
+        userId, name, description, photo, price, user, dateAdded,
+      } = action.payload;
+      state.car[userId] = {
+        name, description, photo, price, user, dateAdded,
+      };
+    },
+    [deleteVehicle.fulfilled]: (state, action) => {
+      state.cars = state.cars.filter((car) => car.user_id !== action.payload);
+      delete state.car[action.payload];
     },
   },
 });
