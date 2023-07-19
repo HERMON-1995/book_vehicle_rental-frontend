@@ -1,5 +1,6 @@
 import MenuIcon from '../components/MenuIcon';
 import SideBar from '../components/SideBar';
+import AddVehicleForm from '../components/AddVehicleForm';
 
 const AddVehicle = () => (
   <div className="drawer lg:drawer-open">
@@ -9,7 +10,7 @@ const AddVehicle = () => (
       <MenuIcon />
       {/* Page content here */}
       {/* <AddVehicle /> */}
-      <h1 className="text-4xl">ADD VEHICLE</h1>
+      <AddVehicleForm />
     </div>
     <SideBar />
   </div>
