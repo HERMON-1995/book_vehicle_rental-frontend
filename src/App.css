@@ -79,7 +79,9 @@
 .swiper-next {
   position: absolute;
   top: 50%;
+
   /* transform: translateY(-50%); */
+
   /* z-index: 10; */
   cursor: pointer;
   width: 30px;
@@ -122,8 +124,6 @@
   font-size: smaller;
   margin: 20px;
 }
-
-
 
 .slide-container {
   background-color: #807d7d;
@@ -174,4 +174,4 @@
 
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
