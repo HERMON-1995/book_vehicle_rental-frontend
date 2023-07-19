@@ -53,7 +53,7 @@ const SideBar = () => {
             <button
               type="button"
               onClick={handleLogout}
-              className=" btn flex text center p-1 pl-4 w-2/3 gap-2 hover:border-xl  text-white bg-red-500 hover:text-red-500 shadow hover:bg-red-100 hover:text-red-500"
+              className=" btn flex text center p-1 pl-4 w-2/3 gap-2 hover:border-xl  hover:text-white  hover:bg-red-500 shadow bg-red-100 text-red-500"
             >
               Logout
               <BiLogOutCircle className="text-3xl" />

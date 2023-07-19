@@ -73,7 +73,7 @@ function LoginForm() {
                 <h3 className="text-center text-3xl ">
                   {values.isMember ? 'Login' : 'Register'}
                 </h3>
-                <div className="w-full md:w-4/5 grid gap-5  lg:w-1/5">
+                <div className="w-full  grid gap-5 ">
                   {/* eslint-disable jsx-a11y/label-has-associated-control */}
                   <div className="form-control">
                     <label className="input-group input-group-vertical">
@@ -99,7 +99,7 @@ function LoginForm() {
                   </label>
                   <button
                     type="submit"
-                    className="btn bg-green-500 text-white"
+                    className="btn bg-green-500 hover:text-green-500 hover:border hover:border-green-500 text-white"
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -112,7 +112,7 @@ function LoginForm() {
                 <p className="text-center">
                   {values.isMember
                     ? 'Not a member yet? '
-                    : 'Already a member? ' }
+                    : 'Already a member? '}
                   <button
                     type="button"
                     onClick={toggleMember}

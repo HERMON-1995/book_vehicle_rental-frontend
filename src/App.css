@@ -46,7 +46,6 @@
 .vehicle-subheader {
   text-align: center;
   font-size: 18px;
-  color: thistle;
 }
 
 .dot-header {
@@ -80,8 +79,10 @@
 .swiper-next {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
+
+  /* transform: translateY(-50%); */
+
+  /* z-index: 10; */
   cursor: pointer;
   width: 30px;
   height: 30px;
@@ -109,7 +110,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
 }
 
 .swiper-slide {
@@ -120,14 +120,9 @@
 }
 
 .car-description {
-  color: thistle;
   width: 18rem;
   font-size: smaller;
   margin: 20px;
-}
-
-span {
-  color: thistle;
 }
 
 .slide-container {
@@ -165,11 +160,6 @@ span {
 .icon {
   width: 2rem;
   height: 2rem;
-}
-
-.car-title {
-  color: white;
-  width: fit-content;
 }
 
 .car-info {

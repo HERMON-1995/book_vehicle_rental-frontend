@@ -10,6 +10,7 @@ const VehicleDetails = () => {
     {
       name, photo, description, price, dateAdded,
     } = car;
+
   return (
     <div className="drawer lg:drawer-open">
       {/* eslint-disable jsx-a11y/label-has-associated-control */}
@@ -18,8 +19,8 @@ const VehicleDetails = () => {
         <MenuIcon />
         <div className="w-full flex">
           <div className="w-3/4 mt-24 ">
-            <div className="w-full flex justify-center items-center">
-              <img src={photo} alt="not found" width="80%" />
+            <div className="w-full flex rounded-full justify-center items-center">
+              <img src={photo} alt="not found" width="80%" height="50%" />
             </div>
           </div>
           <div className="w-1/3 text-end mt-24 pr-16 ">
