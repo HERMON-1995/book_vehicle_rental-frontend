@@ -15,14 +15,27 @@ export const fetchCars = createAsyncThunk(
   },
 );
 
-export const fetchCar = createAsyncThunk(
-  'cars/fetchCar',
-  async (id, { rejectWithValue }) => {
+export const postVehicle = createAsyncThunk(
+  'carSlice/postVehicle', // The action type string for pending/fulfilled/rejected actions
+  async (vehicleData) => {
     try {
-      const response = await axios.get(`${BASE_URL}/cars/${id}`);
-      return response.data;
-    } catch (err) {
-      return rejectWithValue(await err.response.data);
+      const response = await fetch('http://localhost:3001/api/v1/cars', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(vehicleData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error(error.message);
     }
   },
 );
