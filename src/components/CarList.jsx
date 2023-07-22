@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { initializeCars, deleteVehicle } from '../redux/slices/carSlice';
 
 const CarList = () => {
+  const navigate = useNavigate();
+  console.log(navigate);
   const cars = useSelector((state) => state.cars.cars);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Dispatch the initializeCars action when the component mounts
     dispatch(initializeCars());
   }, [dispatch]);
 
-  const handleDelete = (userId) => {
-    dispatch(deleteVehicle(userId));
+  const handleDelete = (vehicleId) => {
+    dispatch(deleteVehicle(vehicleId));
   };
 
   return (
@@ -24,7 +26,7 @@ const CarList = () => {
           <p className="text-gray-700">{car.description}</p>
           <button
             type="button"
-            onClick={() => handleDelete(car.user_id)}
+            onClick={() => handleDelete(car.id)}
             className="bg-red-500 text-white px-4 py-2 rounded-md mt-2 hover:bg-red-600"
           >
             Delete
