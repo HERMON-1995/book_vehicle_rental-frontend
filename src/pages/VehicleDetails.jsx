@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import SideBar from '../components/SideBar';
 import MenuIcon from '../components/MenuIcon';
 
@@ -8,7 +8,7 @@ const VehicleDetails = () => {
   const car = useSelector((state) => state.cars.car[params.user_id]);
   const
     {
-      name, photo, description, price, dateAdded,
+      name, photo, description, price, dateAdded, carId,
     } = car;
 
   return (
@@ -35,7 +35,10 @@ const VehicleDetails = () => {
                 </span>
               </li>
               <li className="flex justify-between  p-2 text-black">
-                <span className=" text-black">Date Added: </span>
+                <span className=" text-black">
+                  Date Added:
+                  {carId}
+                </span>
                 <span className=" text-black">
                   {dateAdded}
                 </span>
@@ -52,7 +55,13 @@ const VehicleDetails = () => {
               <div className="radial-progress bg-green-200 text-green-500 border-4 border-green-300" style={{ '--value': 100 }}>Cars</div>
             </div>
             <br />
-            <button type="submit" className="btn text-white bg-green-500 rounded-xl btn-lg hover:btn-outline">Reserve</button>
+            <Link
+              type="submit"
+              className="btn text-white bg-green-500 rounded-xl btn-lg hover:btn-outline"
+              to={`/reservation/${name}/${carId}`}
+            >
+              Reserve
+            </Link>
           </div>
         </div>
       </div>
