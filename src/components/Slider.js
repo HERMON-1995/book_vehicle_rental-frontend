@@ -37,8 +37,8 @@ function Slider() {
           }}
         >
           {cars.map((car) => (
-            <SwiperSlide key={car.user_id} className="flex flex-col">
-              <Link to={`/details/${car.user_id}`} className="wrapper">
+            <SwiperSlide key={car.id} className="flex flex-col">
+              <Link to={`/details/${car.id}`} className="wrapper">
                 <div className="slide-container">
                   <img className="car" src={car.photo} alt="car" />
                 </div>
