@@ -36,9 +36,6 @@ const SideBar = () => {
             <NavLink to="/" className=" text-xl rounded-none hover:text-white">VEHICLES</NavLink>
           </li>
           <li className="shadow">
-            <NavLink to="/reseve-form" className=" text-xl rounded-none hover:text-white">RESERVE FORM</NavLink>
-          </li>
-          <li className="shadow">
             <NavLink to="/reservations" className=" text-xl rounded-none hover:text-white">RESERVATIONS</NavLink>
           </li>
           <li className="shadow">
