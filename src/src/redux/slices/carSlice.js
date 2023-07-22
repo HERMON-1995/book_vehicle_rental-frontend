@@ -58,7 +58,7 @@ export const reserveVehicle = createAsyncThunk(
   'cars/reserveVehicle',
   async (reservationData) => {
     try {
-      const response = await fetch(`${BASE_URL}/reservations`, {
+      const response = await fetch(`${BASE_URL}/reservation`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,20 +73,6 @@ export const reserveVehicle = createAsyncThunk(
 
       const data = await response.json();
       return data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  },
-);
-
-export const cancelReservation = createAsyncThunk(
-  'cars/cancelReservation',
-  async (vehicleId) => {
-    try {
-      await fetch(`${BASE_URL}/reservations/${vehicleId}`, {
-        method: 'DELETE',
-      });
-      return vehicleId;
     } catch (error) {
       throw new Error(error.message);
     }
@@ -134,8 +120,8 @@ export const carSlice = createSlice({
       state.car = state.cars.reduce(
         (acc, car) => ({
           ...acc,
-          [car.id]: {
-            carId: car.id,
+          [car.user_id]: {
+            car_id: car.id,
             name: car.name,
             description: car.description,
             photo: car.photo,
@@ -168,7 +154,6 @@ export const carSlice = createSlice({
     [fetchReservations.fulfilled]: (state, action) => {
       state.reservations = action.payload;
     },
-
   },
 });
 

@@ -1,23 +1,17 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { cancelReservation, fetchReservations } from '../redux/slices/carSlice';
+import { fetchReservations } from '../redux/slices/carSlice';
 import MenuIcon from '../components/MenuIcon';
 import SideBar from '../components/SideBar';
 
 const Reservations = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { reservations } = useSelector((state) => state.cars);
-  const user = useSelector((state) => state.user.user);
+
   useEffect(() => {
+    // Fetch the reservations data on component mount
     dispatch(fetchReservations());
   }, [dispatch]);
-
-  const handleCancelReservation = (resevationId) => {
-    dispatch(cancelReservation(resevationId));
-    navigate('/reservation', { replace: true });
-  };
 
   return (
     <div className="drawer lg:drawer-open">
@@ -36,27 +30,20 @@ const Reservations = () => {
                   {/* Display reservation details here */}
                   <p>
                     Username:
-                    {user.username}
+                    {reservation.username}
                   </p>
                   <p>
                     Vehicle:
-                    {user.username}
+                    {reservation.selectedItem}
+                  </p>
+                  <p>
+                    Date:
+                    {reservation.date}
                   </p>
                   <p>
                     City:
                     {reservation.city}
                   </p>
-                  <p>
-                    Date:
-                    {reservation.reservation_date}
-                  </p>
-                  <p>
-                    City:
-                    {reservation.returned_date}
-                  </p>
-                  <button onClick={() => handleCancelReservation(reservation.id)} type="submit" className="btn btn-success">
-                    Cancel Reservation
-                  </button>
                 </li>
               ))}
             </ul>

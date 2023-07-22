@@ -25,10 +25,10 @@ function App() {
               </ProtectedRoute>
             )}
           />
-          <Route path="/reservations" element={<Reservations />} />
+          <Route path="/reseve-form" element={<ReserveForm />} />
           <Route
-            path="/reservation/:name/:car_id"
-            element={<ReserveForm />}
+            path="/details/:user_id/reservation/car_id"
+            element={<Reservations />}
           />
           <Route path="/add-vehicle" element={<AddVehicle />} />
           <Route path="/vehicles" element={<Vehicles />} />

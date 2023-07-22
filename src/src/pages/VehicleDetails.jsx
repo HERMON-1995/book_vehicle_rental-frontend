@@ -8,7 +8,7 @@ const VehicleDetails = () => {
   const car = useSelector((state) => state.cars.car[params.user_id]);
   const
     {
-      name, photo, description, price, dateAdded, carId,
+      name, photo, description, price, dateAdded, id,
     } = car;
 
   return (
@@ -35,10 +35,7 @@ const VehicleDetails = () => {
                 </span>
               </li>
               <li className="flex justify-between  p-2 text-black">
-                <span className=" text-black">
-                  Date Added:
-                  {carId}
-                </span>
+                <span className=" text-black">Date Added: </span>
                 <span className=" text-black">
                   {dateAdded}
                 </span>
@@ -58,7 +55,7 @@ const VehicleDetails = () => {
             <Link
               type="submit"
               className="btn text-white bg-green-500 rounded-xl btn-lg hover:btn-outline"
-              to={`/reservation/${name}/${carId}`}
+              to={`/detail/${params.user_id}/reservation/${id}`}
             >
               Reserve
             </Link>
