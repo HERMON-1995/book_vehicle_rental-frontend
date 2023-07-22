@@ -16,7 +16,7 @@ export const fetchCars = createAsyncThunk(
 );
 
 export const postVehicle = createAsyncThunk(
-  'carSlice/postVehicle',
+  'cars/postVehicle',
   async (vehicleData) => {
     try {
       const response = await fetch(`${BASE_URL}/cars`, {
@@ -41,7 +41,7 @@ export const postVehicle = createAsyncThunk(
 );
 
 export const deleteVehicle = createAsyncThunk(
-  'carSlice/deleteVehicle',
+  'cars/deleteVehicle',
   async (userId) => {
     try {
       await fetch(`${BASE_URL}/cars/${userId}`, {
@@ -50,6 +50,57 @@ export const deleteVehicle = createAsyncThunk(
       return userId;
     } catch (error) {
       throw new Error(error.message);
+    }
+  },
+);
+
+export const reserveVehicle = createAsyncThunk(
+  'cars/reserveVehicle',
+  async (reservationData) => {
+    try {
+      const response = await fetch(`${BASE_URL}/reservations`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reservationData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+);
+
+export const cancelReservation = createAsyncThunk(
+  'cars/cancelReservation',
+  async (vehicleId) => {
+    try {
+      await fetch(`${BASE_URL}/reservations/${vehicleId}`, {
+        method: 'DELETE',
+      });
+      return vehicleId;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+);
+
+export const fetchReservations = createAsyncThunk(
+  'cars/fetchReservations',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/reservations`);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(await err.response.data);
     }
   },
 );
@@ -70,6 +121,7 @@ export const initializeCars = createAsyncThunk(
 const initialState = {
   cars: [],
   car: {},
+  reservations: [], // New field for reservations
 };
 
 export const carSlice = createSlice({
@@ -79,17 +131,21 @@ export const carSlice = createSlice({
   extraReducers: {
     [fetchCars.fulfilled]: (state, action) => {
       state.cars = action.payload;
-      state.car = state.cars.reduce((acc, car) => ({
-        ...acc,
-        [car.user_id]: {
-          name: car.name,
-          description: car.description,
-          photo: car.photo,
-          price: car.price,
-          user: car.user,
-          dateAdded: car.date_added,
-        },
-      }), {});
+      state.car = state.cars.reduce(
+        (acc, car) => ({
+          ...acc,
+          [car.id]: {
+            carId: car.id,
+            name: car.name,
+            description: car.description,
+            photo: car.photo,
+            price: car.price,
+            user: car.user,
+            dateAdded: car.date_added,
+          },
+        }),
+        {},
+      );
     },
     [postVehicle.fulfilled]: (state, action) => {
       state.cars.push(action.payload);
@@ -97,13 +153,22 @@ export const carSlice = createSlice({
         userId, name, description, photo, price, user, dateAdded,
       } = action.payload;
       state.car[userId] = {
-        name, description, photo, price, user, dateAdded,
+        name,
+        description,
+        photo,
+        price,
+        user,
+        dateAdded,
       };
     },
     [deleteVehicle.fulfilled]: (state, action) => {
       state.cars = state.cars.filter((car) => car.user_id !== action.payload);
       delete state.car[action.payload];
     },
+    [fetchReservations.fulfilled]: (state, action) => {
+      state.reservations = action.payload;
+    },
+
   },
 });
 
