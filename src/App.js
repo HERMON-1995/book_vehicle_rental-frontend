@@ -27,7 +27,7 @@ function App() {
           />
           <Route path="/reservations" element={<Reservations />} />
           <Route
-            path="/reservation/:name/:car_id"
+            path="/reservation/:car_id"
             element={<ReserveForm />}
           />
           <Route path="/add-vehicle" element={<AddVehicle />} />
