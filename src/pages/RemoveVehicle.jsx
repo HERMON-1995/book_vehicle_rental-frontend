@@ -10,7 +10,7 @@ const RemoveVehicle = () => {
     <div className="drawer lg:drawer-open">
       {/* eslint-disable jsx-a11y/label-has-associated-control */}
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content flex flex-col items-center justify-center px-2 gap-3">
         <MenuIcon />
         {/* Render the list of items if showItemList is true */}
         {showItemList ? <CarList /> : <h1 className="text-4xl">REMOVE VEHICLE</h1>}
