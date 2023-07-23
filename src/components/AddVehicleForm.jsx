@@ -16,7 +16,6 @@ const AddVehicleForm = () => {
   const handleVehicleSubmit = async (event) => {
     event.preventDefault();
     const userId = user.id;
-    console.log(userId);
 
     try {
       const vehicleData = {
@@ -35,7 +34,7 @@ const AddVehicleForm = () => {
       setDescription('');
       toast.success('Vehicle added successfully');
     } catch (error) {
-      console.error(error.message);
+      error(error.message);
     }
   };
 
