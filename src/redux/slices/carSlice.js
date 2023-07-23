@@ -119,9 +119,10 @@ export const initializeCars = createAsyncThunk(
 );
 
 const initialState = {
+  isLoading: false,
   cars: [],
   car: {},
-  reservations: [], // New field for reservations
+  reservations: [],
 };
 
 export const carSlice = createSlice({
