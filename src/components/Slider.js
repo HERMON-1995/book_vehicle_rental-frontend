@@ -9,7 +9,25 @@ import { TiSocialTwitterCircular, TiSocialPinterestCircular, TiSocialFacebookCir
 import 'swiper/css/navigation';
 
 function Slider() {
-  const { cars } = useSelector((state) => state.cars);
+  const { cars, isLoading, error } = useSelector((state) => state.cars);
+  if (!isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-red-500 font-semibold">
+          Error: Failed to fetch vehicles.
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={{ width: '100%', position: 'relative' }}>
       <div className="slider-title">
