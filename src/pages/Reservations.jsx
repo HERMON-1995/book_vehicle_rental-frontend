@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { GiCancel } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelReservation, fetchReservations } from '../redux/slices/carSlice';
@@ -8,7 +8,7 @@ import SideBar from '../components/SideBar';
 
 const Reservations = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const reservations = useSelector((state) => state.cars.reservations);
   const cars = useSelector((state) => state.cars.car);
 
@@ -17,8 +17,12 @@ const Reservations = () => {
   }, [dispatch, reservations.length]);
 
   const handleCancelReservation = (reservationId) => {
-    dispatch(cancelReservation(reservationId));
-    navigate('/reservation', { replace: true });
+    try {
+      dispatch(cancelReservation(reservationId));
+      dispatch(fetchReservations);
+    } catch (error) {
+      error('Error while canceling reservation:', error.message);
+    }
   };
 
   return (
