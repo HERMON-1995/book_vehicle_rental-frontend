@@ -130,8 +130,14 @@ export const carSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    // Fetching cars
+    [fetchCars.pending]: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
     [fetchCars.fulfilled]: (state, action) => {
       state.cars = action.payload;
+      state.isLoading = true;
       state.car = state.cars.reduce(
         (acc, car) => ({
           ...acc,
@@ -148,6 +154,11 @@ export const carSlice = createSlice({
         {},
       );
     },
+    [fetchCars.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message;
+    },
+
     [postVehicle.fulfilled]: (state, action) => {
       state.cars.push(action.payload);
       const {
