@@ -1,21 +1,27 @@
 import React, { useEffect } from 'react';
 import { MdOutlineDeleteSweep } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+// import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { initializeCars, deleteVehicle } from '../redux/slices/carSlice';
+import { deleteVehicle, fetchCars } from '../redux/slices/carSlice';
 
 const CarList = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const cars = useSelector((state) => state.cars.cars);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initializeCars());
+    dispatch(fetchCars());
   }, [dispatch]);
 
-  const handleDelete = async (vehicleId) => {
-    await dispatch(deleteVehicle(vehicleId));
-    navigate('.', { replace: true });
+  const handleDelete = (vehicleId) => {
+    try {
+      dispatch(deleteVehicle(vehicleId));
+      dispatch(fetchCars());
+      toast.success('Vehicle successfully deleted.');
+    } catch (error) {
+      error('something went wrong');
+    }
   };
 
   return (
