@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { reserveVehicle } from '../redux/slices/carSlice';
+import { fetchReservations, reserveVehicle } from '../redux/slices/carSlice';
 
 const ReservationPage = () => {
   const params = useParams();
@@ -30,6 +30,7 @@ const ReservationPage = () => {
     } else {
       dispatch(reserveVehicle(reservationData))
         .then(() => {
+          dispatch(fetchReservations);
           navigate('/reservations');
           toast.success(`${car.name} successfully reserved.`);
         })
