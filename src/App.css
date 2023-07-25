@@ -201,6 +201,10 @@
   cursor: pointer;
 }
 
+.active {
+  background: #97bf0f;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
