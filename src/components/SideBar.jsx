@@ -18,7 +18,7 @@ const SideBar = () => {
   };
 
   return (
-    <div className="drawer-side shadow ">
+    <div className="drawer-side shadow">
       {/* eslint-disable jsx-a11y/label-has-associated-control */}
       <label htmlFor="my-drawer-2" className="drawer-overlay" />
       <ul className="menu p-4 w-60 h-full bg-base-200 text-base-content flex flex-col justify-between">
@@ -33,7 +33,10 @@ const SideBar = () => {
             <NavLink to="/" className="p-3 text-xl rounded-none shadow-sm w-full hover:bg-[#97bf0f]">VEHICLES</NavLink>
           </div>
           <div className="shadow py-3">
-            <NavLink to="/reservations" className="p-3 text-xl rounded-none hover:bg-[#97bf0f] w-full">RESERVATIONS</NavLink>
+            <NavLink to="/reservations" className="p-3 text-xl rounded-none hover:bg-[#97bf0f] w-full">MY RESERVATIONS</NavLink>
+          </div>
+          <div className="shadow py-3">
+            <NavLink to="/reserve-vehicle" className="p-3 text-xl rounded-none hover:bg-[#97bf0f] w-full">RESERVE</NavLink>
           </div>
           <div className="shadow py-3">
             <NavLink to="/add-vehicle" className="p-3 text-xl rounded-none hover:bg-[#97bf0f] w-full">ADD VEHICLE</NavLink>
