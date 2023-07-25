@@ -11,7 +11,6 @@ const AddVehicleForm = () => {
   const [description, setDescription] = useState('');
 
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.cars);
   const user = useSelector((state) => state.user.user);
   const handleVehicleSubmit = async (event) => {
     event.preventDefault();
@@ -104,8 +103,8 @@ const AddVehicleForm = () => {
           </label>
         </div>
         <div className="form-control">
-          <button type="submit" className="btn btn-primary" disabled={isLoading}>
-            {isLoading ? 'Adding...' : 'Add Car'}
+          <button type="submit" className="btn btn-primary">
+            Add Car
           </button>
         </div>
       </div>
