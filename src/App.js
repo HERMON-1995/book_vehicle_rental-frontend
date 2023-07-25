@@ -10,6 +10,7 @@ import Reservations from './pages/Reservations';
 import AddVehicle from './pages/AddVehicle';
 import RemoveVehicle from './pages/RemoveVehicle';
 import VehicleDetails from './pages/VehicleDetails';
+import VehicleReserve from './pages/VehicleReserve';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/vehicles" element={<Vehicles />} />
           <Route path="/remove-vehicle" element={<RemoveVehicle />} />
           <Route path="/details/:user_id" element={<VehicleDetails />} />
+          <Route path="/reserve-vehicle" element={<VehicleReserve />} />
           <Route path="/register" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
