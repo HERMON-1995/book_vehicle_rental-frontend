@@ -154,11 +154,11 @@ export const carSlice = createSlice({
         {},
       );
     },
+    // fetch cars
     [fetchCars.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.error.message;
     },
-
     [postVehicle.fulfilled]: (state, action) => {
       state.cars.push(action.payload);
       const {
@@ -173,11 +173,19 @@ export const carSlice = createSlice({
         dateAdded,
       };
     },
+    // delete vehicle
     [deleteVehicle.fulfilled]: (state, action) => {
       state.cars = state.cars.filter((car) => car.user_id !== action.payload);
       delete state.car[action.payload];
     },
+    // fetch reservations
+    [fetchReservations.pending]: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
     [fetchReservations.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.error = null;
       state.reservations = action.payload;
     },
 
