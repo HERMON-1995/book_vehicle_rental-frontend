@@ -54,7 +54,7 @@ const Reservations = () => {
           <table className=" border table-zebra w-full px-3">
             <thead>
               <tr className="mx-5 border text-black text-[14px] text-start ">
-                <th className="text-start md:text-center text-xl">Car</th>
+                <th className="text-center text-xl">Car</th>
                 <th className="text-start md:text-center text-xl">Date</th>
                 <th className="text-start md:text-center text-xl">City</th>
                 <th className="text-start md:text-center text-xl">Cancel</th>
@@ -80,7 +80,7 @@ const Reservations = () => {
                           </div>
                         </div>
                       </td>
-                      <td className="w-10/12 flex flex-col md:flex-row gap-3 justify-start p-3">
+                      <td className="w-10/12 flex flex-col md:flex-row gap-3 justify-center p-3">
                         <span>
                           Reserved:
                           {' '}
