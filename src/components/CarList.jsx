@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { MdOutlineDeleteSweep } from 'react-icons/md';
 import { toast } from 'react-toastify';
-// import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteVehicle, fetchCars } from '../redux/slices/carSlice';
 
 const CarList = () => {
-  // const navigate = useNavigate();
   const cars = useSelector((state) => state.cars.cars);
   const dispatch = useDispatch();
 
@@ -14,10 +12,10 @@ const CarList = () => {
     dispatch(fetchCars());
   }, [dispatch]);
 
-  const handleDelete = (vehicleId) => {
+  const handleDelete = async (vehicleId) => {
     try {
-      dispatch(deleteVehicle(vehicleId));
-      dispatch(fetchCars());
+      await dispatch(deleteVehicle(vehicleId));
+      await dispatch(fetchCars());
       toast.success('Vehicle successfully deleted.');
     } catch (error) {
       error('something went wrong');
