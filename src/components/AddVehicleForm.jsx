@@ -38,7 +38,7 @@ const AddVehicleForm = () => {
   };
 
   return (
-    <form className="w-full md:w-1/3" onSubmit={handleVehicleSubmit}>
+    <form className="w-full md:w-1/3 p-5" onSubmit={handleVehicleSubmit}>
       {/* eslint-disable jsx-a11y/label-has-associated-control */}
       <div className="flex flex-col gap-3">
         <p className="text-4xl text-center">Create Car</p>
