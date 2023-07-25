@@ -9,7 +9,7 @@ import {
 const initialState = {
   isLoading: false,
   user: null,
-  isAuthenticated: false,
+  isAuthenticated: JSON.parse(localStorage.getItem('isAuthenticated')) ?? false,
 };
 
 export const registerUser = createAsyncThunk(
@@ -31,6 +31,7 @@ export const registerUser = createAsyncThunk(
           },
         },
       );
+      localStorage.setItem('isAuthenticated', true);
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -55,6 +56,7 @@ export const loginUser = createAsyncThunk(
           },
         },
       );
+      localStorage.setItem('isAuthenticated', true);
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -67,8 +69,10 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     logoutUser: (state) => {
-      state.user = null;
+      state.isAuthenticated = false;
+      localStorage.setItem('isAuthenticated', false);
       state.isSidebarOpen = false;
+      state.user = null;
       removeUserFromLocalStorage();
     },
   },
