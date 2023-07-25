@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   isLoading: false,
-  user: null,
+  user: JSON.parse(localStorage.getItem('user')) ?? false,
   isAuthenticated: JSON.parse(localStorage.getItem('isAuthenticated')) ?? false,
 };
 
