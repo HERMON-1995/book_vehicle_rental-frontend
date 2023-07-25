@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { fetchReservations, reserveVehicle } from '../redux/slices/carSlice';
 
@@ -129,6 +129,14 @@ const ReservationPage = () => {
             </div>
             <button type="submit" className="btn bg-green-800 w-full">RESERVE</button>
           </form>
+          <br />
+          <Link className="link link-info hover:link-primary" to={`/details/${car.carId}`}>
+            Back to
+            {' '}
+            {car.name}
+            {' '}
+            details
+          </Link>
         </div>
       </div>
     </div>
