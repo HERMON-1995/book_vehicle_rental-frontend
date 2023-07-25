@@ -192,4 +192,5 @@ export const carSlice = createSlice({
   },
 });
 
+export const { selectCar } = carSlice.actions;
 export default carSlice.reducer;
