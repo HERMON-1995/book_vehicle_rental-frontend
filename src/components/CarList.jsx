@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { MdOutlineDeleteSweep } from 'react-icons/md';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteVehicle, fetchCars } from '../redux/slices/carSlice';
 
@@ -33,7 +34,11 @@ const CarList = () => {
               </div>
             </div>
             <div className="card-body">
-              <h2 className="card-title">{car.name}</h2>
+              <h2 className="card-title">
+                <Link className="link-hover link-primary" to={`/details/${car.id}`}>
+                  {car.name}
+                </Link>
+              </h2>
               <small>{car.description}</small>
               <div className="card-actions justify-end">
                 <button
