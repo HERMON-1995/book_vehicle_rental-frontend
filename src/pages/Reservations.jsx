@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GiCancel } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelReservation, fetchReservations } from '../redux/slices/carSlice';
@@ -51,12 +51,13 @@ const Reservations = () => {
       <div className="drawer-content md:px-5">
         <MenuIcon />
         <div>
-          <table className=" border table-zebra w-full">
+          <table className=" border table-zebra w-full px-3">
             <thead>
-              <tr className="mx-5 border text-black text-[14px] text-start">
-                <th className="text-start text-2xl">Car</th>
-                <th className="text-start text-2xl">Date</th>
-                <th className="text-start text-2xl">City</th>
+              <tr className="mx-5 border text-black text-[14px] text-start ">
+                <th className="text-start md:text-center text-xl">Car</th>
+                <th className="text-start md:text-center text-xl">Date</th>
+                <th className="text-start md:text-center text-xl">City</th>
+                <th className="text-start md:text-center text-xl">Cancel</th>
               </tr>
             </thead>
             <tbody>
@@ -64,28 +65,30 @@ const Reservations = () => {
                 && reservations.map((reservation) => {
                   const car = cars[reservation.car_id];
                   return (
-                    <tr className="border my-5" key={reservation.id}>
-                      <td className="text-center">
+                    <tr className="border my-5 shadow-xl mb-3" key={reservation.id}>
+                      <td className="text-center p-5">
                         <div className="flex flex-col items-center gap-1 md:gap-3 md:flex-row">
                           <div className="avatar">
                             <div className="mask mask-squircle w-12 h-12">
-                              {car.photo && <img src={car.photo} alt="Avatar Tailwind CSS Component" />}
+                              {car.photo && <img src={car.photo} alt="vehicle" />}
                             </div>
                           </div>
                           <div>
-                            <div className="font-bold">{car.name}</div>
+                            <Link to={`/details/${car.carId}`} className="font-bold link-hover link-primary">
+                              {car.name}
+                            </Link>
                           </div>
                         </div>
                       </td>
-                      <td className="w-10/12 flex flex-col gap-3 justify-start">
-                        <span className="text-xl">
+                      <td className="w-10/12 flex flex-col md:flex-row gap-3 justify-start p-3">
+                        <span>
                           Reserved:
                           {' '}
                           <p className="badge badge-ghost font-bold p-3 bg-[#99cc33]">
                             {reservation.reservation_date}
                           </p>
                         </span>
-                        <span className="text-xl">
+                        <span>
                           Returned:
                           {' '}
                           <p className="badge badge-ghost font-bold p-3 bg-[#ffcc00]">
