@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { GiCancel } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelReservation, fetchReservations } from '../redux/slices/carSlice';
@@ -8,22 +8,42 @@ import SideBar from '../components/SideBar';
 
 const Reservations = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const reservations = useSelector((state) => state.cars.reservations);
   const cars = useSelector((state) => state.cars.car);
+  const { isLoading, error } = useSelector((state) => state.cars);
 
   useEffect(() => {
-    if (reservations.length === 0) dispatch(fetchReservations());
-  }, [dispatch, reservations.length]);
+    dispatch(fetchReservations());
+  }, [dispatch]);
 
-  const handleCancelReservation = (reservationId) => {
+  const handleCancelReservation = async (reservationId) => {
     try {
-      dispatch(cancelReservation(reservationId));
-      dispatch(fetchReservations);
+      await dispatch(cancelReservation(reservationId));
+      await dispatch(fetchReservations());
+      navigate('/reservations');
     } catch (error) {
       error('Error while canceling reservation:', error.message);
     }
   };
+
+  if (!isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-red-500 font-semibold">
+          Error: Failed to fetch vehicles.
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="drawer lg:drawer-open">
