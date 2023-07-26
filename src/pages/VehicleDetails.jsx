@@ -15,16 +15,16 @@ const VehicleDetails = () => {
     <div className="drawer lg:drawer-open">
       {/* eslint-disable jsx-a11y/label-has-associated-control */}
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
+      <div className="drawer-content px-3">
         <MenuIcon />
-        <div className="w-full flex">
-          <div className="w-3/4 mt-24 ">
-            <div className="w-full flex rounded-full justify-center items-center">
-              <img src={photo} alt="not found" width="80%" height="50%" />
+        <div className="w-full flex flex-col md:flex-row md:mt-32">
+          <div className="text-xl md:w-3/4">
+            <div className="px-10  flex justify-center content-center items-center rounded-full justify-center items-center">
+              <img src={photo} alt="not found" className="shadow-xl w-full" />
             </div>
           </div>
-          <div className="w-1/3 text-end mt-24 pr-16 ">
-            <h1 className="text-4xl font-bold">{name}</h1>
+          <div className="md:w-1/4">
+            <h1 className="text-4xl font-bold text-center">{name}</h1>
             <p className="text-sm text-justify">{description}</p>
             <ul>
               <li className="flex justify-between bg-base-200 p-2 text-black">
@@ -37,7 +37,6 @@ const VehicleDetails = () => {
               <li className="flex justify-between  p-2 text-black">
                 <span className=" text-black">
                   Date Added:
-                  {carId}
                 </span>
                 <span className=" text-black">
                   {dateAdded}
@@ -51,17 +50,16 @@ const VehicleDetails = () => {
               </li>
             </ul>
             <br />
-            <div>
+            <div className="flex justify-between items-center">
               <div className="radial-progress bg-green-200 text-green-500 border-4 border-green-300" style={{ '--value': 100 }}>Cars</div>
+              <Link
+                type="submit"
+                className="btn text-white bg-green-500 rounded-xl btn-lg hover:btn-outline"
+                to={`/reservation/${carId}`}
+              >
+                Reserve
+              </Link>
             </div>
-            <br />
-            <Link
-              type="submit"
-              className="btn text-white bg-green-500 rounded-xl btn-lg hover:btn-outline"
-              to={`/reservation/${name}/${carId}`}
-            >
-              Reserve
-            </Link>
           </div>
         </div>
       </div>

@@ -1,36 +1,56 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { MdOutlineDeleteSweep } from 'react-icons/md';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { initializeCars, deleteVehicle } from '../redux/slices/carSlice';
+import { deleteVehicle, fetchCars } from '../redux/slices/carSlice';
 
 const CarList = () => {
-  const navigate = useNavigate();
-  console.log(navigate);
   const cars = useSelector((state) => state.cars.cars);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initializeCars());
+    dispatch(fetchCars());
   }, [dispatch]);
 
-  const handleDelete = (vehicleId) => {
-    dispatch(deleteVehicle(vehicleId));
+  const handleDelete = async (vehicleId) => {
+    try {
+      await dispatch(deleteVehicle(vehicleId));
+      await dispatch(fetchCars());
+      toast.success('Vehicle successfully deleted.');
+    } catch (error) {
+      error('something went wrong');
+    }
   };
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">List of Cars</h2>
       {cars.map((car) => (
-        <div key={car.user_id} className="border border-gray-300 rounded-lg p-4 mb-4">
-          <h3 className="text-xl font-semibold">{car.name}</h3>
-          <p className="text-gray-700">{car.description}</p>
-          <button
-            type="button"
-            onClick={() => handleDelete(car.id)}
-            className="bg-red-500 text-white px-4 py-2 rounded-md mt-2 hover:bg-red-600"
-          >
-            Delete
-          </button>
+        <div key={car.id} className="p-3">
+          <div className="card card-side bg-base-100 shadow-xl">
+            <div className="avatar items-center ">
+              <div className="w-32 h-32 md:h-52 md:w-52 rounded-full">
+                <img src={car.photo} alt="Cars" className="w-1/2" />
+              </div>
+            </div>
+            <div className="card-body">
+              <h2 className="card-title">
+                <Link className="link-hover link-primary" to={`/details/${car.id}`}>
+                  {car.name}
+                </Link>
+              </h2>
+              <small>{car.description}</small>
+              <div className="card-actions justify-end">
+                <button
+                  type="button"
+                  onClick={() => handleDelete(car.id)}
+                  className="btn btn-sm bg-red-100 text-red-500 hover:bg-red-500 hover:text-red-100"
+                >
+                  <MdOutlineDeleteSweep className="text-3xl" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       ))}
     </div>

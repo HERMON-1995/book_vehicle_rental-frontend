@@ -119,9 +119,10 @@ export const initializeCars = createAsyncThunk(
 );
 
 const initialState = {
+  isLoading: false,
   cars: [],
   car: {},
-  reservations: [], // New field for reservations
+  reservations: [],
 };
 
 export const carSlice = createSlice({
@@ -129,8 +130,14 @@ export const carSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    // Fetching cars
+    [fetchCars.pending]: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
     [fetchCars.fulfilled]: (state, action) => {
       state.cars = action.payload;
+      state.isLoading = true;
       state.car = state.cars.reduce(
         (acc, car) => ({
           ...acc,
@@ -147,6 +154,11 @@ export const carSlice = createSlice({
         {},
       );
     },
+    // fetch cars
+    [fetchCars.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message;
+    },
     [postVehicle.fulfilled]: (state, action) => {
       state.cars.push(action.payload);
       const {
@@ -161,15 +173,24 @@ export const carSlice = createSlice({
         dateAdded,
       };
     },
+    // delete vehicle
     [deleteVehicle.fulfilled]: (state, action) => {
       state.cars = state.cars.filter((car) => car.user_id !== action.payload);
       delete state.car[action.payload];
     },
+    // fetch reservations
+    [fetchReservations.pending]: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
     [fetchReservations.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.error = null;
       state.reservations = action.payload;
     },
 
   },
 });
 
+export const { selectCar } = carSlice.actions;
 export default carSlice.reducer;

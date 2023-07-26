@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import logo from '../../assets/logo.png';
 import { toast } from 'react-toastify';
 import { loginUser, registerUser } from '../redux/slices/userSlice';
 
@@ -45,7 +44,7 @@ function LoginForm() {
       setIsLoggedIn(true);
       navigate('/');
     }
-  }, [isAuthenticated]);
+  }, [navigate, isAuthenticated]);
   return (
     <div className="  flex w-full">
       {isLoggedIn ? (

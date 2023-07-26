@@ -13,15 +13,12 @@ const SideBar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    setTimeout(() => {
-      dispatch(logoutUser());
-      window.location.reload();
-    }, 1000);
+    dispatch(logoutUser());
     toast.success('Logout Successful!');
   };
 
   return (
-    <div className="drawer-side shadow ">
+    <div className="drawer-side shadow">
       {/* eslint-disable jsx-a11y/label-has-associated-control */}
       <label htmlFor="my-drawer-2" className="drawer-overlay" />
       <ul className="menu p-4 w-60 h-full bg-base-200 text-base-content flex flex-col justify-between">
@@ -32,18 +29,21 @@ const SideBar = () => {
             </Link>
           </div>
           {/* Sidebar content here */}
-          <li className="shadow  shadow-x">
-            <NavLink to="/" className=" text-xl rounded-none hover:text-white">VEHICLES</NavLink>
-          </li>
-          <li className="shadow">
-            <NavLink to="/reservations" className=" text-xl rounded-none hover:text-white">RESERVATIONS</NavLink>
-          </li>
-          <li className="shadow">
-            <NavLink to="/add-vehicle" className=" text-xl rounded-none hover:text-white">ADD VEHICLE</NavLink>
-          </li>
-          <li className="shadow">
-            <NavLink to="/remove-vehicle" className=" text-xl rounded-none hover:text-white">REMOVE VEHICLE</NavLink>
-          </li>
+          <div className="shadow py-3">
+            <NavLink to="/" className="p-3 text-xl rounded-none shadow-sm w-full hover:bg-[#97bf0f]">VEHICLES</NavLink>
+          </div>
+          <div className="shadow py-3">
+            <NavLink to="/reservations" className="p-3 text-xl rounded-none hover:bg-[#97bf0f] w-full">MY RESERVATIONS</NavLink>
+          </div>
+          <div className="shadow py-3">
+            <NavLink to="/reserve-vehicle" className="p-3 text-xl rounded-none hover:bg-[#97bf0f] w-full">RESERVE</NavLink>
+          </div>
+          <div className="shadow py-3">
+            <NavLink to="/add-vehicle" className="p-3 text-xl rounded-none hover:bg-[#97bf0f] w-full">ADD VEHICLE</NavLink>
+          </div>
+          <div className="shadow py-3">
+            <NavLink to="/remove-vehicle" className="p-3 text-xl rounded-none hover:bg-[#97bf0f] w-full">REMOVE VEHICLE</NavLink>
+          </div>
           <br />
           <br />
           <Link to="/register" className="flex justify-center items-center">

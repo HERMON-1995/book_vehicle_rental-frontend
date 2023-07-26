@@ -11,12 +11,10 @@ const AddVehicleForm = () => {
   const [description, setDescription] = useState('');
 
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.cars);
   const user = useSelector((state) => state.user.user);
   const handleVehicleSubmit = async (event) => {
     event.preventDefault();
     const userId = user.id;
-    console.log(userId);
 
     try {
       const vehicleData = {
@@ -35,12 +33,12 @@ const AddVehicleForm = () => {
       setDescription('');
       toast.success('Vehicle added successfully');
     } catch (error) {
-      console.error(error.message);
+      error(error.message);
     }
   };
 
   return (
-    <form className="w-full md:w-1/3" onSubmit={handleVehicleSubmit}>
+    <form className="w-full md:w-1/3 p-5" onSubmit={handleVehicleSubmit}>
       {/* eslint-disable jsx-a11y/label-has-associated-control */}
       <div className="flex flex-col gap-3">
         <p className="text-4xl text-center">Create Car</p>
@@ -105,8 +103,8 @@ const AddVehicleForm = () => {
           </label>
         </div>
         <div className="form-control">
-          <button type="submit" className="btn btn-primary" disabled={isLoading}>
-            {isLoading ? 'Adding...' : 'Add Car'}
+          <button type="submit" className="btn btn-primary">
+            Add Car
           </button>
         </div>
       </div>

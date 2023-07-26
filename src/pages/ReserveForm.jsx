@@ -1,30 +1,17 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import MenuIcon from '../components/MenuIcon';
-import SideBar from '../components/SideBar';
+import { useDispatch, useSelector } from 'react-redux';
 import ReservationPage from '../components/ReserveVehicleForm';
 import { fetchReservations } from '../redux/slices/carSlice';
 
 const ReserveForm = () => {
+  const reservations = useSelector((state) => state.cars.reservations);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchReservations);
-  }, []);
-  return (
-    <div className="drawer lg:drawer-open">
-      {/* eslint-disable jsx-a11y/label-has-associated-control */}
-      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
-        <MenuIcon />
-        {/* Page content here */}
-        {/* <ReservationForm /> */}
-        <h1 className="text-4xl">RESERVE FORM</h1>
-        <ReservationPage />
-      </div>
-      <SideBar />
-    </div>
-  );
+    if (reservations.length === 0) dispatch(fetchReservations());
+  }, [dispatch, reservations.length]);
+
+  return <ReservationPage />;
 };
 
 export default ReserveForm;
