@@ -28,6 +28,9 @@
 
 ## [Link to the back-end repo](https://github.com/HERMON-1995/Book_vehicle_rental-backend/tree/development)
 
+## Below is the database diagram
+<img src="./Database-diagram/Vet clinic diagram.png" alt="Vehicle appointment diagram" />
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
