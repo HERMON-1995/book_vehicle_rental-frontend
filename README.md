@@ -138,6 +138,16 @@ To run tests, run the following command:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- Kanban board -->
+
+## 📇 Kanban board <a name="Kanban board"></a>
+
+- [Kanban board link](https://github.com/HERMON-1995/Book_vehicle_rental-backend/projects/1)
+- [The screenshot link of the initial state of our Kanban board](https://github.com/HERMON-1995/Book_vehicle_rental-backend/issues/17)
+- Final number of team members: four individuals working collectively.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
