@@ -26,10 +26,7 @@
 
 **[Book vehicle rental frontend]** is a frontend react app for our book vehicle rental backend. It shows the features of the app and provides a user with better experience and interface
 
-## [Link to the back-end repo](https://github.com/HERMON-1995/Book_vehicle_rental-backend/tree/development)
-
-## Below is the database diagram
-<img src="./Database-diagram/Vet clinic diagram.png" alt="Vehicle appointment diagram" />
+## [Link to the back-end repo](https://github.com/HERMON-1995/Book_vehicle_rental-backend/tree/main)
 
 ## 🛠 Built With <a name="built-with"></a>
 
