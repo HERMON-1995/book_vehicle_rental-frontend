@@ -12,35 +12,33 @@ import RemoveVehicle from './pages/RemoveVehicle';
 import VehicleDetails from './pages/VehicleDetails';
 import VehicleReserve from './pages/VehicleReserve';
 
-function App() {
-  return (
-    <div>
-      <ToastContainer />
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={(
-              <ProtectedRoute>
-                <Vehicles />
-              </ProtectedRoute>
+const App = () => (
+  <div>
+    <ToastContainer />
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={(
+            <ProtectedRoute>
+              <Vehicles />
+            </ProtectedRoute>
             )}
-          />
-          <Route path="/reservations" element={<Reservations />} />
-          <Route
-            path="/reservation/:car_id"
-            element={<ReserveForm />}
-          />
-          <Route path="/add-vehicle" element={<AddVehicle />} />
-          <Route path="/vehicles" element={<Vehicles />} />
-          <Route path="/remove-vehicle" element={<RemoveVehicle />} />
-          <Route path="/details/:user_id" element={<VehicleDetails />} />
-          <Route path="/reserve-vehicle" element={<VehicleReserve />} />
-          <Route path="/register" element={<LoginPage />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
-}
+        />
+        <Route path="/reservations" element={<Reservations />} />
+        <Route
+          path="/reservation/:car_id"
+          element={<ReserveForm />}
+        />
+        <Route path="/add-vehicle" element={<AddVehicle />} />
+        <Route path="/vehicles" element={<Vehicles />} />
+        <Route path="/remove-vehicle" element={<RemoveVehicle />} />
+        <Route path="/details/:user_id" element={<VehicleDetails />} />
+        <Route path="/reserve-vehicle" element={<VehicleReserve />} />
+        <Route path="/register" element={<LoginPage />} />
+      </Routes>
+    </BrowserRouter>
+  </div>
+);
 
 export default App;

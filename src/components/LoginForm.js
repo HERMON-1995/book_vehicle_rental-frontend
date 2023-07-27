@@ -10,7 +10,7 @@ const initialState = {
   isMember: true,
 };
 
-function LoginForm() {
+const LoginForm = () => {
   const [values, setValues] = useState(initialState);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dispatch = useDispatch();
@@ -127,6 +127,6 @@ function LoginForm() {
       )}
     </div>
   );
-}
+};
 
 export default LoginForm;

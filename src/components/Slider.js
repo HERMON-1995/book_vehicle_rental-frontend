@@ -8,8 +8,9 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { TiSocialTwitterCircular, TiSocialPinterestCircular, TiSocialFacebookCircular } from 'react-icons/ti';
 import 'swiper/css/navigation';
 
-function Slider() {
+const Slider = () => {
   const { cars, isLoading, error } = useSelector((state) => state.cars);
+
   if (!isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -29,14 +30,14 @@ function Slider() {
   }
 
   return (
-    <div style={{ width: '100%', position: 'relative' }}>
-      <div className="slider-title">
+    <div id="slider" style={{ position: 'relative' }} className="w-[85%] md:w-[95%]">
+      <div className="flex justify-center items-center flex-col">
         <h2 className="vehicle-header">Latest Models</h2>
         <p className="vehicle-subheader">Please select a model</p>
         <p className="dot-header">..............................</p>
       </div>
 
-      <div style={{ width: '90%', position: 'relative' }}>
+      <div style={{ width: '100%', position: 'relative' }}>
         <div className="slider-btns">
           <div className="swiper-prev">
             <IoIosArrowBack />
@@ -47,15 +48,22 @@ function Slider() {
         </div>
         <Swiper
           spaceBetween={50}
-          slidesPerView={3}
+          slidesPerView={1}
+          slidesPerGroup={1}
           modules={[Navigation]}
           navigation={{
             nextEl: '.swiper-next',
             prevEl: '.swiper-prev',
           }}
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+            },
+          }}
         >
           {cars.map((car) => (
-            <SwiperSlide key={car.id} className="flex flex-col">
+            <SwiperSlide key={car.id} className="pl-10 flex flex-col">
               <Link to={`/details/${car.id}`} className="wrapper">
                 <div className="slide-container">
                   <img className="car" src={car.photo} alt="car" />
@@ -77,6 +85,6 @@ function Slider() {
       </div>
     </div>
   );
-}
+};
 
 export default Slider;
