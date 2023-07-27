@@ -18,7 +18,7 @@ const SideBar = () => {
   };
 
   return (
-    <div className="drawer-side shadow">
+    <div className="drawer-side shadow" style={{ zIndex: 9999 }}>
       {/* eslint-disable jsx-a11y/label-has-associated-control */}
       <label htmlFor="my-drawer-2" className="drawer-overlay" />
       <ul className="menu p-4 w-60 h-full bg-base-200 text-base-content flex flex-col justify-between">
